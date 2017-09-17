@@ -1,0 +1,187 @@
+@color:
+    ~like:
+        I like blue
+        I like red
+        I love pink
+        I love blue
+        I love red
+        I want pink
+        I want blue
+        I want red
+        I will go with pink
+        I will go with blue
+        I will go with red
+        I prefer pink
+        I prefer blue
+        I prefer red
+        I will get pink
+        I will get blue
+        I will get red
+        get me pink
+        get me blue
+        get me red
+    ~dislike:
+        I don't like pink
+        I don't like blue
+        I don't like red
+        I hate pink
+        I hate blue
+        I hate red
+        I don't want pink
+        I don't want blue
+        I don't want red
+        Anything except pink
+        Anything except blue
+        Anything except red
+        No pink
+        No blue
+        No red
+        pink sucks
+        blue sucks
+        red sucks
+    ~query:
+        Do you have pink?
+        What all colors you have?
+        Please tell me all colors
+
+
+
+@size:
+    ~like:
+        I like blue
+        I like red
+        I love pink
+        I love blue
+        I love red
+        I want pink
+        I want blue
+        I want red
+        I will go with pink
+        I will go with blue
+        I will go with red
+        I prefer pink
+        I prefer blue
+        I prefer red
+        I will get pink
+        I will get blue
+        I will get red
+        get me pink
+        get me blue
+        get me red
+    ~dislike:
+        I don't like pink
+        I don't like blue
+        I don't like red
+        I hate pink
+        I hate blue
+        I hate red
+        I don't want pink
+        I don't want blue
+        I don't want red
+        Anything except pink
+        Anything except blue
+        Anything except red
+        No pink
+        No blue
+        No red
+        pink sucks
+        blue sucks
+        red sucks
+    ~query:
+        Do you have pink?
+        What all colors you have?
+        Please tell me all colors
+
+@price:
+    ~like:
+        I like blue
+        I like red
+        I love pink
+        I love blue
+        I love red
+        I want pink
+        I want blue
+        I want red
+        I will go with pink
+        I will go with blue
+        I will go with red
+        I prefer pink
+        I prefer blue
+        I prefer red
+        I will get pink
+        I will get blue
+        I will get red
+        get me pink
+        get me blue
+        get me red
+    ~dislike:
+        I don't like pink
+        I don't like blue
+        I don't like red
+        I hate pink
+        I hate blue
+        I hate red
+        I don't want pink
+        I don't want blue
+        I don't want red
+        Anything except pink
+        Anything except blue
+        Anything except red
+        No pink
+        No blue
+        No red
+        pink sucks
+        blue sucks
+        red sucks
+    ~query:
+        Do you have pink?
+        What all colors you have?
+        Please tell me all colors
+
+@brand:
+    ~like:
+        I like blue
+        I like red
+        I love pink
+        I love blue
+        I love red
+        I want pink
+        I want blue
+        I want red
+        I will go with pink
+        I will go with blue
+        I will go with red
+        I prefer pink
+        I prefer blue
+        I prefer red
+        I will get pink
+        I will get blue
+        I will get red
+        get me pink
+        get me blue
+        get me red
+    ~dislike:
+        I don't like pink
+        I don't like blue
+        I don't like red
+        I hate pink
+        I hate blue
+        I hate red
+        I don't want pink
+        I don't want blue
+        I don't want red
+        Anything except pink
+        Anything except blue
+        Anything except red
+        No pink
+        No blue
+        No red
+        pink sucks
+        blue sucks
+        red sucks
+    ~query:
+        Do you have pink?
+        What all colors you have?
+        Please tell me all colors
+
+#END

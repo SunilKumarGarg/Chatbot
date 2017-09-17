@@ -1,0 +1,1 @@
+INTENT_DATA_FILE = "Data/Intent.txt"
