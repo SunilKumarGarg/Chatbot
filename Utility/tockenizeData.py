@@ -5,7 +5,7 @@ from nltk.stem.lancaster import LancasterStemmer
 class TockenizeData:
 
     @staticmethod
-    def getTockenizedData(statement):
+    def getTockenizedDataWithStem(statement):
         tokens = nltk.word_tokenize(statement)
 
         filtered_words = [word for word in tokens if word not in stopwords.words('english')]
@@ -15,3 +15,9 @@ class TockenizeData:
         for ff in filtered_words:
             f.append(LS.stem(ff))
         return f
+
+    @staticmethod
+    def getTockenizedData(statement):
+        tokens = nltk.word_tokenize(statement)
+        filtered_words = [word for word in tokens if word not in stopwords.words('english')]
+        return filtered_words

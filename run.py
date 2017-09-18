@@ -12,8 +12,12 @@ sys.path.append('Data')
 from featureDetection import FeatureDetection
 from chatbot import Chatbot
 from uniqueID import UniqueID
+from featureIntentData import IntentTrainingData
+from featureDetection import FeatureDetectionEngine
 
 app = Flask(__name__)
+IntentTrainingData.initialize()
+FeatureDetectionEngine.initialize()
 
 #chatPerson = Chatbot("amazon.com")
 

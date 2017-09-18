@@ -3,30 +3,35 @@ import random
 import numpy as np
 from Dataconverter import *
 from intentTrainingDataFileReader import *
+import tflearn
+import tensorflow as tf
 
 
-class IntentTrainingData:
+class IntentTrainingData:    
+    #Need to read this list from file later 
+    featureList = ["color", "size", "price", "brand"]
+    trainingData = {}
+    model = {}
+    @staticmethod
+    def initialize():
+               
+        for feature in IntentTrainingData.featureList:
+            IntentTrainingData.trainingData[feature] = IntentTrainingDataFileReader().getIntentTrainingData(feature)
+            IntentTrainingData.trainModel(feature)
 
-    
-    def __init__(self, feature):
-        self.readIntentTrainingData(feature)
-
-    def readIntentTrainingData(self, feature):
-        self.trainingData = IntentDataFileReader().getIntentTrainingData(feature)   
-
-
-    def getFilteredTrainingData(self):
+    @staticmethod
+    def getFilteredTrainingData(feature):
         FilteredTrainingSet = []
 
-        for statement, intent in self.trainingData:
-            f = TockenizeData.getTockenizedData(statement)
+        for statement, intent in IntentTrainingData.trainingData[feature]:
+            f = TockenizeData.getTockenizedDataWithStem(statement)
             FilteredTrainingSet.append((f, intent))
 
         return FilteredTrainingSet
     
-
-    def bagOfWords(self):
-        FilteredTrainingSet = self.getFilteredTrainingData()
+    @staticmethod
+    def bagOfWords(feature):
+        FilteredTrainingSet = IntentTrainingData.getFilteredTrainingData(feature)
         
         listElements = []
         for elements, intent in FilteredTrainingSet:
@@ -35,19 +40,43 @@ class IntentTrainingData:
         
         return list(set(listElements))
 
-    def liftOfIntent(self):
-        FilteredTrainingSet = self.getFilteredTrainingData()
+    @staticmethod
+    def liftOfIntent(feature):
+        FilteredTrainingSet = IntentTrainingData.getFilteredTrainingData(feature)
         listIntent = []
         for elements, intent in FilteredTrainingSet:
             listIntent.append(intent)
 
         return list(set(listIntent))
 
+    @staticmethod
+    def trainModel(feature):
+    
+        train_x, train_y = IntentTrainingData.getTrainingSet(feature)      
+        print train_x
+        print train_y
+        tf.reset_default_graph()
+        net = tflearn.input_data(shape=[None, len(train_x[0])])
+        net = tflearn.fully_connected(net, 32)
+        net = tflearn.fully_connected(net, 32)
+        net = tflearn.fully_connected(net, len(train_y[0]), activation='softmax')
+        net = tflearn.regression(net)
 
-    def getTrainingSet(self):
-        FilteredTrainingSet = self.getFilteredTrainingData()
-        bagOfWords = self.bagOfWords()
-        listIntent = self.liftOfIntent()
+        # Define model and setup tensorboard
+        IntentTrainingData.model[feature] = tflearn.DNN(net, tensorboard_dir='tflearn_logs')
+        # Start training (apply gradient descent algorithm)
+        IntentTrainingData.model[feature].fit(train_x, train_y, n_epoch=500, batch_size=16, show_metric=True)
+
+    @staticmethod
+    def predictIntent(feature,Input):
+        return IntentTrainingData.model[feature].predict([Input])
+
+
+    @staticmethod
+    def getTrainingSet(feature):
+        FilteredTrainingSet = IntentTrainingData.getFilteredTrainingData(feature)
+        bagOfWords = IntentTrainingData.bagOfWords(feature)
+        listIntent = IntentTrainingData.liftOfIntent(feature)
         
         trainingSet = []
 

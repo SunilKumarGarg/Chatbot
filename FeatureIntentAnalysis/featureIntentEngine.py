@@ -16,20 +16,19 @@ from json import dumps
 
 class IntentAnalyzer:
 
-    def __init__(self, Feature, product, domain):
-        self.trainingData = IntentTrainingData(Feature)
+    def __init__(self, Feature, product, domain):        
         self.webProductData = WebProductData(domain)
         self.featureValues = self.getFeatureValue(Feature, product)
         
         self.product = product
         self.Feature = Feature
-        self.trainModel()
+        
 
 
     def getInputArray(self, var):        
-        bagOfWords = self.trainingData.bagOfWords()
-        listIntent = self.trainingData.liftOfIntent()
-        filteredData = TockenizeData.getTockenizedData(var)
+        bagOfWords = IntentTrainingData.bagOfWords(self.Feature)
+        listIntent = IntentTrainingData.liftOfIntent(self.Feature)
+        filteredData = TockenizeData.getTockenizedDataWithStem(var)
 
         localTrainingSet = []
         for word in bagOfWords:        
@@ -42,7 +41,7 @@ class IntentAnalyzer:
 
 
     def getIntentAndValue(self, statement):
-        filteredData = TockenizeData.getTockenizedData(statement)
+        filteredData = TockenizeData.getTockenizedDataWithStem(statement)
 
 
         Input = self.getInputArray(statement)        
@@ -53,14 +52,17 @@ class IntentAnalyzer:
                     #print "great choice"
                     return "like", filteredData[0]
 
-        var = Dataconverter.convertBinaryListToInt(self.model.predict([Input]))
+        var = Dataconverter.convertBinaryListToInt(IntentTrainingData.model[self.Feature].predict([Input]))
 
         filteredData = TockenizeData.getTockenizedData(statement)
-        listIntent = self.trainingData.liftOfIntent()        
+        listIntent = IntentTrainingData.liftOfIntent(self.Feature)        
         
         intent = listIntent[var]
         featureValue = ""
 
+        print filteredData
+        print self.featureValues
+        print intent
         for value in self.featureValues:
             if value in filteredData:
                 featureValue = value
@@ -79,27 +81,9 @@ class IntentAnalyzer:
         return dumps({"Text": "Please select " + self.Feature, "Button" :str(self.getFeatureValue(self.Feature, self.product))})
 
 
-
-
-    def trainModel(self):
-
-        train_x, train_y = self.trainingData.getTrainingSet()        
-        tf.reset_default_graph()
-        net = tflearn.input_data(shape=[None, 22])
-        net = tflearn.fully_connected(net, 32)
-        net = tflearn.fully_connected(net, 32)
-        net = tflearn.fully_connected(net, 2, activation='softmax')
-        net = tflearn.regression(net)
-
-        # Define model and setup tensorboard
-        self.model = tflearn.DNN(net, tensorboard_dir='tflearn_logs')
-        # Start training (apply gradient descent algorithm)
-        self.model.fit(train_x, train_y, n_epoch=500, batch_size=16, show_metric=True)
-
-
 if __name__ == "__main__":    
-    
-    inAnaly = IntentAnalyzer("color","shoes","amazon.com")
+    IntentTrainingData.initialize()
+    inAnaly = IntentAnalyzer("size","shoes","amazon.com")
     while(1):
         var = raw_input(">>")
         intent, featureValue = inAnaly.getIntentAndValue(var)

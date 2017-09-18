@@ -1,0 +1,63 @@
+@size:
+    I like medium
+    I like number
+    I like small
+    I like large
+    I love medium
+    I love number
+    I love small
+    I love large
+    I want medium
+    I want number
+    I want small
+    I want large
+    I will go with medium
+    I will go with number
+    I will go with small
+    I will go with large
+    I prefer medium
+    I prefer number
+    I prefer small
+    I prefer large
+    I will get medium
+    I will get number
+    I will get small
+    I will get large
+    get me medium
+    get me number
+    get me small
+    get me large
+
+@price:
+    $
+    $ number
+    price
+
+@brand:
+    adidas
+    rebook   
+    brand 
+
+@color1:
+    I like blue
+    I like red
+    I love pink
+    I love blue
+    I love red
+    I want pink
+    I want blue
+    I want red
+    I will go with pink
+    I will go with blue
+    I will go with red
+    I prefer pink
+    I prefer blue
+    I prefer red
+    I will get pink
+    I will get blue
+    I will get red
+    get me pink
+    get me blue
+    get me red
+
+#END

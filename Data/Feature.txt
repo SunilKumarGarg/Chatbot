@@ -1,0 +1,21 @@
+@size:
+    size 
+
+@price:
+    $
+    number
+    price
+
+@brand:   
+    brand 
+    adidas
+    nike
+
+@color:
+    color
+    pink
+    red
+    blue
+    black
+
+#END

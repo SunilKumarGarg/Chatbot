@@ -8,9 +8,10 @@ from salespersonChatbot import SalespersonChatbot
 
 
 class Chatbot:
-    def __init__(self,domain):
+    def __init__(self,domain):        
         self.chatMode = "greeting"
         self.salesPerson = SalespersonChatbot(domain)
+        
 
 
         self.salesPerson.createFeatureInstance("shoes")

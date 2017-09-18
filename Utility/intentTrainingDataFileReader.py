@@ -1,7 +1,12 @@
+import sys
+sys.path.append('../Data')
+sys.path.append('../WebDataParser')
+sys.path.append('../Utility')
+
 import config
 import re
 
-class IntentDataFileReader:
+class IntentTrainingDataFileReader:
 
     def __init__(self):
         
@@ -9,23 +14,24 @@ class IntentDataFileReader:
         feature = ""
         intent = ""
 
-        self.data = {}
-        FeatureObject = []           
+        self.intentData = {}
+        IntentObject = []   
+                
 
         lines = f.readlines()
         for line in lines:
             line = str.rstrip(str.lstrip(line))
             if "#END" in line:
                 if feature != "":
-                    self.data[feature] = FeatureObject                
+                    self.intentData[feature] = IntentObject                
                 return
             else:                
                 if re.match(r"^@.*", line):
                     line = re.search(r"^@(.*):", line)
                     if line != feature:
                         if feature != "":
-                            self.data[feature] = FeatureObject
-                            FeatureObject = []
+                            self.intentData[feature] = IntentObject
+                            IntentObject = []
 
                         feature = line.group(1)
                         
@@ -38,9 +44,9 @@ class IntentDataFileReader:
                         
                 elif len(line):
                     statement = line
-                    FeatureObject.append((statement,intent))
+                    IntentObject.append((statement,intent))
 
 
     def getIntentTrainingData(self, feature):
-        return self.data[feature]
+        return self.intentData[feature]   
 
