@@ -15,6 +15,17 @@ class ChatApp extends React.Component {
     this.sendHandler = this.sendHandler.bind(this);   
   }
 
+  componentDidMount()
+  {
+    const botMessageObject = {
+      username: "Bot",
+      message: JSON.stringify(this.props.message),
+      fromMe: false
+    };
+    
+    this.addMessage(botMessageObject);
+  }
+
   createJsonMessage(message)
   {
     return { 'Text':message,'action':'','userID':this.props.clientID }

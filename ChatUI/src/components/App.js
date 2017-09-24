@@ -40,7 +40,7 @@ class App extends React.Component {
     })
     .then( function(data) {
       console.log(data.clientID);
-      this.setState({submitted: true, clientID: data.clientID});
+      this.setState({submitted: true, clientID: data.clientID, message:data});
     }.bind(this))
     .catch( function() {
     })
@@ -51,7 +51,7 @@ class App extends React.Component {
     if (this.state.submitted) {
       // Form was submitted, now show the main App
       return (
-        <ChatApp domainName={this.state.domainName} clientID={this.state.clientID} />
+        <ChatApp domainName={this.state.domainName} clientID={this.state.clientID} message={this.state.message} />
       );
     }
 
