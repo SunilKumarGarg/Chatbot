@@ -47,7 +47,7 @@ class Chatbot:
         elif self.chatMode == "sales":
             if self.salesPerson.product == True:
                 self.salesPerson.createFeatureInstance(text)
-                return self.salesPerson.output()
+                return self.salesPerson.output("","")
             
             return self.salesPerson.processInput(text)
         #Need to implement this.

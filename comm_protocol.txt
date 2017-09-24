@@ -1,0 +1,42 @@
+1. When client connect to server, it send this message:
+
+{
+	"Domain":"amazon.com"
+}
+
+2. Server replies:
+
+{
+	"greeting": "Hello! Welcome to client service",
+	"Options": ["Products", "General Questions"],
+	"client_id": 1
+	"Error": "If there is any error"
+}
+
+3. Client replies:
+
+{
+	"Text":"Products",
+	"action":"",
+	"userID":1
+}
+
+4. server replies:
+
+{"Text": "Product List", "Button": ["jeans", "shoes"], "Input_status": "Status of last input"}
+
+or
+
+{
+	"Text": "Product List",
+	"template": [t1,t2......], 
+	"Input_status": "Status of last input"
+}
+
+where t1 = 
+
+{
+	"name":"productName"
+	:::::::
+	All details of the product
+}

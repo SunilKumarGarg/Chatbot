@@ -55,7 +55,11 @@ class IntentAnalyzer:
         var = Dataconverter.convertBinaryListToInt(IntentTrainingData.model[self.Feature].predict([Input]))
 
         filteredData = TockenizeData.getTockenizedData(statement)
-        listIntent = IntentTrainingData.liftOfIntent(self.Feature)        
+        listIntent = IntentTrainingData.liftOfIntent(self.Feature) 
+
+        if var == -1:
+            return "Error", "USER_ERROR"
+                   
         
         intent = listIntent[var]
         featureValue = ""
@@ -66,11 +70,9 @@ class IntentAnalyzer:
         for value in self.featureValues:
             if value in filteredData:
                 featureValue = value
-                #print "great choice"
                 return intent, featureValue
-
-        #print "Sorry, we do not have this selection." 
-        return "none", ""
+        
+        return "Error", "SELECTION_NOT_AVAILABLE"
         
         
 

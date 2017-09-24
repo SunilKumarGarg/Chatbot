@@ -144,18 +144,8 @@ class FeatureDetection:
         if FeatureDetectionEngine.getFeature(statement) != "None":
             return FeatureDetectionEngine.getFeature(statement)
         else:
-            return self.feature
+            return self.feature 
         
-        innn = TockenizeData.getTockenizedDataWithStem(statement)
-        for i in innn:
-            if i in ["red","blue","green"]:
-                return "color"
-            elif i in ["small", "medium", "size"]:
-                return "size"
-            elif i in ["adida", "rebook"]:
-                return "brand"
-            elif self.feature != "":
-                return self.feature
 
     def setcontext(self, feature):
         self.feature = feature

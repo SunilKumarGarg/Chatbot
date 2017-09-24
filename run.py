@@ -1,5 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for
 import sys
+import json
+from json import dumps
+from flask_cors import CORS
 
 sys.path.append('Chatbot')
 sys.path.append('SalespersonChatbot')
@@ -16,6 +19,7 @@ from featureIntentData import IntentTrainingData
 from featureDetection import FeatureDetectionEngine
 
 app = Flask(__name__)
+CORS(app)
 IntentTrainingData.initialize()
 FeatureDetectionEngine.initialize()
 
@@ -26,14 +30,20 @@ userDatabase = {}
 
 @app.route('/' , methods=['POST'])
 def Welcome():
-    p = request.get_json()
+    p = json.loads(request.data)
+    print "%s" % p
     uniqueID = UniqueID.getUniqueID()
     userDatabase[uniqueID] = Chatbot(p["Domain"])
-    return userDatabase[uniqueID].greeting()
+    res = json.loads(userDatabase[uniqueID].greeting())
+    res['clientID'] = uniqueID
+    return dumps(res)
+
+    
 
 @app.route('/Input' , methods=['POST'])
 def processInput():
-    p = request.get_json()
+    p = json.loads(request.data)
+    print "%s" % p
     try:
         uniqueID = p["userID"]
     except:
