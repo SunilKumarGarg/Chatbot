@@ -9,19 +9,18 @@ from salespersonChatbot import SalespersonChatbot
 
 class Chatbot:
     def __init__(self,domain):        
+
         self.chatMode = "greeting"
         self.salesPerson = SalespersonChatbot(domain)
-        
 
-
-        self.salesPerson.createFeatureInstance("shoes")
+        #self.salesPerson.createFeatureInstance("shoes")
         #Need to implement 
         #self.FAQPerson = FAQChatbot(domain)
 
     
 
     def greeting(self):        
-        return dumps({"greeting": "Hello! Welcome to client service","Options": ["Products", "General Questions"]})
+        return dumps({"Text": "Hello! Welcome.","Button": ["product", "FAQ"]})
 
     def processInput(self, statement):
         
@@ -29,11 +28,12 @@ class Chatbot:
         text, action = self.getText(statement)
 
         if action == "reset":
-            self.chatMode = "greeting";
+            self.chatMode = "greeting"
+            self.salesPerson.product = False
             return self.greeting()
 
         if self.chatMode == "greeting":
-            if text == "Products":
+            if text == "product":
                 self.chatMode = "sales"
 
                 if self.salesPerson.product == False:

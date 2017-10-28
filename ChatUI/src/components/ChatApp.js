@@ -28,12 +28,19 @@ class ChatApp extends React.Component {
 
   createJsonMessage(message)
   {
+    if(message.search("@reset") != -1)
+      return { 'Text':'','action':'reset','userID':this.props.clientID }
+
     return { 'Text':message,'action':'','userID':this.props.clientID }
   }
+
+  
 
   sendHandler(message) {    
 
     const jsonMessage = this.createJsonMessage(message);
+
+    
 
     const messageObject = {
       username: "Me",
@@ -85,7 +92,7 @@ class ChatApp extends React.Component {
   render() {
     return (
       <div className="container">
-        <h3>React Chat App</h3>
+        <h3>Chatbot CMPE295 Project</h3>
         <Messages messages={this.state.messages} />
         <ChatInput onSend={this.sendHandler} />
       </div>

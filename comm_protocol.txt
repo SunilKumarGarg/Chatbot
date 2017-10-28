@@ -7,10 +7,12 @@
 2. Server replies:
 
 {
-	"greeting": "Hello! Welcome to client service",
-	"Options": ["Products", "General Questions"],
+	"Text": "Hello! Welcome to client service",
+	"Button": ["Products", "General Questions"],
+	"template": [],
+	"Error":"",
+	"Input_status": "Welcome to amazon.com",
 	"client_id": 1
-	"Error": "If there is any error"
 }
 
 3. Client replies:
@@ -23,17 +25,16 @@
 
 4. server replies:
 
-{"Text": "Product List", "Button": ["jeans", "shoes"], "Input_status": "Status of last input"}
-
-or
-
 {
-	"Text": "Product List",
-	"template": [t1,t2......], 
-	"Input_status": "Status of last input"
+	"Text": "Product List", 
+	"Button": ["jeans", "shoes"], 
+	"template": [],
+	"Error":"", 
+	"Input_status": "Status of last input",
+	"client_id": 1
 }
 
-where t1 = 
+where template contains t1 = 
 
 {
 	"name":"productName"

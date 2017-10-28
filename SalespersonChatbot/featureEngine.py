@@ -1,9 +1,7 @@
 
 from featureIntentEngine import *
 
-class FeatureEngine:
-    
-    
+class FeatureEngine:   
 
     def __init__(self, feature, product, domain):
         self.feature = feature
@@ -11,7 +9,7 @@ class FeatureEngine:
         self.like = []
         self.dislike = []
         self.intentAnalyzer = IntentAnalyzer(feature, product, domain)
-        self.question = {"color":"Which color do you like", "size":"which color do you like", "brand":"which brand you like?", "price":"What the price range?"}
+        
 
     def getIntentAndValue(self, statement):
         intent, value = self.intentAnalyzer.getIntentAndValue(statement)

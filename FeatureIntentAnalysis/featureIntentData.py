@@ -9,7 +9,7 @@ import tensorflow as tf
 
 class IntentTrainingData:    
     #Need to read this list from file later 
-    featureList = ["color", "size", "price", "brand"]
+    featureList = ["color", "size", "price", "brand", "style"]
     trainingData = {}
     model = {}
     @staticmethod
@@ -24,7 +24,8 @@ class IntentTrainingData:
         FilteredTrainingSet = []
 
         for statement, intent in IntentTrainingData.trainingData[feature]:
-            f = TockenizeData.getTockenizedDataWithStem(statement)
+            #f = TockenizeData.getTockenizedDataWithStem(statement)
+            f = TockenizeData.getTockenizedData(statement)
             FilteredTrainingSet.append((f, intent))
 
         return FilteredTrainingSet
@@ -41,7 +42,7 @@ class IntentTrainingData:
         return list(set(listElements))
 
     @staticmethod
-    def liftOfIntent(feature):
+    def listOfIntent(feature):
         FilteredTrainingSet = IntentTrainingData.getFilteredTrainingData(feature)
         listIntent = []
         for elements, intent in FilteredTrainingSet:
@@ -76,7 +77,7 @@ class IntentTrainingData:
     def getTrainingSet(feature):
         FilteredTrainingSet = IntentTrainingData.getFilteredTrainingData(feature)
         bagOfWords = IntentTrainingData.bagOfWords(feature)
-        listIntent = IntentTrainingData.liftOfIntent(feature)
+        listIntent = IntentTrainingData.listOfIntent(feature)
         
         trainingSet = []
 

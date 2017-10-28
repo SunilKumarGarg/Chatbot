@@ -12,9 +12,14 @@ class WebProductData:
         condition = {}
         condition["Key"] = self.domain
         return Database.getProductList(condition)
+
     def getFeatureList(self, condition):
         condition["Key"] = self.domain
         return Database.getFeatureList(condition)
+    
+    def getProductDetails(self, condition):
+        condition["Key"] = self.domain
+        return Database.getProductDetails(condition)
 
 
 #wpd = WebProductData("amazon.com")

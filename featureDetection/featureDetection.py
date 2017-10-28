@@ -24,7 +24,8 @@ class FeatureDetectionEngine:
         FilteredTrainingSet = []
 
         for statement, feature in FeatureDetectionEngine.trainingData:
-            f = TockenizeData.getTockenizedDataWithStem(statement)
+            #f = TockenizeData.getTockenizedDataWithStem(statement)
+            f = TockenizeData.getTockenizedData(statement)
             FilteredTrainingSet.append((f, feature))
 
         return FilteredTrainingSet
@@ -71,7 +72,8 @@ class FeatureDetectionEngine:
     @staticmethod
     def getInputArray(var):        
         bagOfWords = FeatureDetectionEngine.bagOfWords()
-        filteredData = TockenizeData.getTockenizedDataWithStem(var)
+        #filteredData = TockenizeData.getTockenizedDataWithStem(var)
+        filteredData = TockenizeData.getTockenizedData(var)
 
         localTrainingSet = []
         for word in bagOfWords:        
@@ -144,9 +146,10 @@ class FeatureDetection:
         if FeatureDetectionEngine.getFeature(statement) != "None":
             return FeatureDetectionEngine.getFeature(statement)
         else:
+            #if not able to determine the feature from user input, live in the same feature context in which question was asked.
             return self.feature 
         
-
+    
     def setcontext(self, feature):
         self.feature = feature
 

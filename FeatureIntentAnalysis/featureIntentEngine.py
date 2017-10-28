@@ -27,8 +27,9 @@ class IntentAnalyzer:
 
     def getInputArray(self, var):        
         bagOfWords = IntentTrainingData.bagOfWords(self.Feature)
-        listIntent = IntentTrainingData.liftOfIntent(self.Feature)
-        filteredData = TockenizeData.getTockenizedDataWithStem(var)
+        listIntent = IntentTrainingData.listOfIntent(self.Feature)
+        #filteredData = TockenizeData.getTockenizedDataWithStem(var)
+        filteredData = TockenizeData.getTockenizedData(var)
 
         localTrainingSet = []
         for word in bagOfWords:        
@@ -41,25 +42,25 @@ class IntentAnalyzer:
 
 
     def getIntentAndValue(self, statement):
-        filteredData = TockenizeData.getTockenizedDataWithStem(statement)
-
+        #filteredData = TockenizeData.getTockenizedDataWithStem(statement)
+        filteredData = TockenizeData.getTockenizedData(statement)
 
         Input = self.getInputArray(statement)        
 
         if len(filteredData) == 1:
             for f in self.getFeatureValue(self.Feature, self.product):
                 if filteredData[0] in f:
-                    #print "great choice"
                     return "like", filteredData[0]
 
         var = Dataconverter.convertBinaryListToInt(IntentTrainingData.model[self.Feature].predict([Input]))
 
         filteredData = TockenizeData.getTockenizedData(statement)
-        listIntent = IntentTrainingData.liftOfIntent(self.Feature) 
+        listIntent = IntentTrainingData.listOfIntent(self.Feature) 
 
         if var == -1:
             return "Error", "USER_ERROR"
-                   
+
+        #if intent is question. process that question and return the reply in "Question", "Reply string" format                   
         
         intent = listIntent[var]
         featureValue = ""
@@ -85,7 +86,7 @@ class IntentAnalyzer:
 
 if __name__ == "__main__":    
     IntentTrainingData.initialize()
-    inAnaly = IntentAnalyzer("size","shoes","amazon.com")
+    inAnaly = IntentAnalyzer("color","shoes","amazon.com")
     while(1):
         var = raw_input(">>")
         intent, featureValue = inAnaly.getIntentAndValue(var)

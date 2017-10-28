@@ -1,0 +1,186 @@
+@color:
+    ~like:
+        I like pink
+        I like blue
+        I like red
+        I love pink
+        I love blue
+        I love red
+        I want pink
+        I want blue
+        I want red
+        I will go with pink
+        I will go with blue
+        I will go with red
+        I prefer pink
+        I prefer blue
+        I prefer red
+        I will get pink
+        I will get blue
+        I will get red
+        get me pink
+        get me blue
+        get me red
+    ~dislike:
+        I don't like pink
+        I don't like blue
+        I don't like red
+        I hate pink
+        I hate blue
+        I hate red
+        I don't want pink
+        I don't want blue
+        I don't want red
+        Anything except pink
+        Anything except blue
+        Anything except red
+        No pink
+        No blue
+        No red
+        pink sucks
+        blue sucks
+        red sucks
+    ~query:
+        Do you have pink?
+        What all colors you have?
+        Please tell me all colors
+
+@size:
+    ~like:
+        I like medium
+        I like number
+        I like small
+        I like large
+        I love medium
+        I love number
+        I love small
+        I love large
+        I want medium
+        I want number
+        I want small
+        I want large
+        I will go with medium
+        I will go with number
+        I will go with small
+        I will go with large
+        I prefer medium
+        I prefer number
+        I prefer small
+        I prefer large
+        I will get medium
+        I will get number
+        I will get small
+        I will get large
+        get me medium
+        get me number
+        get me small
+        get me large
+    ~dislike:
+        I don't like medium
+        I don't like number
+        I don't like small
+        I don't like large
+        I hate medium
+        I hate number
+        I hate small
+        I hate large
+        I don't want medium
+        I don't want number
+        I don't want small
+        I don't want large
+        Anything except medium
+        Anything except number
+        Anything except small
+        Anything except large
+        No medium
+        No number
+        No small
+        No large
+        medium sucks
+        number sucks
+        small sucks
+        large sucks
+
+    ~query:
+        Do you have number?
+        will number fit me?
+
+@price:
+    ~like:
+        $ number
+    ~dislike:
+        No $ number
+    ~query:
+        Do you have $ number?
+
+@brand:
+    ~like:
+        I like adidas
+        I like rebook
+        I love adidas
+        I love rebook
+        I want adidas
+        I want rebook
+        I will go with adidas
+        I will go with rebook
+        I prefer adidas
+        I prefer rebook
+        I will get adidas
+        I will get rebook
+        get me adidas
+        get me rebook
+    ~dislike:
+        I don't like adidas
+        I don't like rebook
+        I hate adidas
+        I hate rebook
+        I don't want adidas
+        I don't want rebook
+        Anything except adidas
+        Anything except rebook
+        No adidas
+        No rebook
+        adidas sucks
+        rebook sucks
+    ~query:
+        Do you have adidas?
+        Do you have rebook?
+        What all brand you have?
+        Please tell me all brand
+
+@style:
+    ~like:
+        I like regular fit
+        I like tight fit
+        I love regular fit
+        I love tight fit
+        I want regular fit
+        I want tight fit
+        I will go with regular fit
+        I will go with tight fit
+        I prefer regular fit
+        I prefer tight fit
+        I will get regular fit
+        I will get tight fit
+        get me regular fit
+        get me tight fit
+    ~dislike:
+        I don't like regular fit
+        I don't like tight fit
+        I hate regular fit
+        I hate tight fit
+        I don't want regular fit
+        I don't want tight fit
+        Anything except regular fit
+        Anything except tight fit
+        No regular fit
+        No tight fit
+        regular fit sucks
+        tight fit sucks
+    ~query:
+        Do you have regular fit?
+        Do you have tight fit?
+        What all brand you have?
+        Please tell me all brand
+
+#END

@@ -22,6 +22,9 @@ class SalespersonChatbot:
         prod = {}
         prod["Text"] = "Product List"
         prod["Button"] = self.productList
+        prod['Template'] = []
+        prod['Error'] = ""
+        prod['Input_status'] = ""
         return dumps(prod)
 
     def createFeatureInstance(self,product):
@@ -42,17 +45,11 @@ class SalespersonChatbot:
                 if featureObject.isSlothasValue() == False:
                     self.featureDetect.setcontext(featureObject.feature)
                     r = json.loads(featureObject.getQuestion())
-                    r["Intent"] = intent
-                    r["result"] = result
-
-                    return dumps(r)
-
-
+                    r["Input_status"] = intent + " " + result
+                    r["template"] = []
+                    r["Error"] = ""
+                    return dumps(r)        
         
-        print "You have selected this: "
-        for featureObject in self.featureInstance:
-            print featureObject.feature + ":"+featureObject.slot
-
         return self.createFinalResponse()
 
     def input(self, statement):
@@ -68,12 +65,20 @@ class SalespersonChatbot:
 
     def createFinalResponse(self):
         res = {}
+        res["Button"] = []
         feature = {}
         for featureObject in self.featureInstance:
             print featureObject.feature + ":"+featureObject.slot
-            feature[featureObject.feature] = featureObject.slot
+            feature["product_list."+featureObject.feature] = featureObject.slot
+            res["Button"].append(featureObject.slot)
 
-        res["Feature"] = feature
+        print res["Button"]
+        res["Text"] = "Selected Items"
+        print feature
+        res['Template'] = self.webProductData.getProductDetails(feature)
+        res['Error'] = ""
+        res['Input_status'] = ""
+    
         print dumps(res)
         return dumps(res)
                 
