@@ -32,7 +32,7 @@ class Database:
             return []
 
     @staticmethod
-    def getFeatureList(condition):
+    def getFeatureList(condition={}):
         d = Database.getProductInfo(condition)
         f = []
         for domain in d:
@@ -117,7 +117,7 @@ class Database:
                     },
                     {
                         "product": "jeans",
-                        "style": "tightfit",
+                        "style": "tight_fit",
                         "brand": "levis",
                         "price": "38",
                         "size": ["28","30","32","34","38"],
@@ -125,7 +125,7 @@ class Database:
                     },
                     {
                         "product": "jeans",
-                        "style": "regularfit",
+                        "style": "regular_fit",
                         "brand": "levis",
                         "price": "28",
                         "size": ["28","30","32","34","38"],
@@ -133,8 +133,8 @@ class Database:
                     },
                     {
                         "product": "jeans",
-                        "style": "regularfit",
-                        "brand": "oldnavi",
+                        "style": "regular_fit",
+                        "brand": "old_navi",
                         "price": "28",
                         "size": ["28","30","32","34","38"],
                         "color": ["blue","green","black"]
@@ -174,7 +174,7 @@ class Database:
                     },
                     {
                         "product": "pants",
-                        "style": "tightfit",
+                        "style": "tight_fit",
                         "brand": "levis",
                         "price": "38",
                         "size": ["28","30","32","34","38"],
@@ -182,7 +182,7 @@ class Database:
                     },
                     {
                         "product": "pants",
-                        "style": "regularfit",
+                        "style": "regular_fit",
                         "brand": "levis",
                         "price": "28",
                         "size": ["28","30","32","34","38"],
@@ -190,8 +190,8 @@ class Database:
                     },
                     {
                         "product": "pants",
-                        "style": "regularfit",
-                        "brand": "oldnavi",
+                        "style": "regular_fit",
+                        "brand": "old_navi",
                         "price": "28",
                         "size": ["28","30","32","34","38"],
                         "color": ["blue","green","black"]
@@ -204,8 +204,8 @@ class Database:
         )
 
 if __name__ == "__main__":
-    #Database.storeProductInfo()
-    condition = {}
-    featureList = Database.getFeatureList(condition)
-    for f in featureList:
-        print Database.getFeatureInfo(condition,f)
+    Database.storeProductInfo()
+    # condition = {}
+    # featureList = Database.getFeatureList(condition)
+    # for f in featureList:
+    #     print Database.getFeatureInfo(condition,f)

@@ -5,11 +5,15 @@ from Dataconverter import *
 from intentTrainingDataFileReader import *
 import tflearn
 import tensorflow as tf
+from database import Database
+
+
+
 
 
 class IntentTrainingData:    
-    #Need to read this list from file later 
-    featureList = ["color", "size", "price", "brand", "style"]
+     
+    featureList = Database.getFeatureList()
     trainingData = {}
     model = {}
     @staticmethod

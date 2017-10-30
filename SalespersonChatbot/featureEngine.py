@@ -11,8 +11,14 @@ class FeatureEngine:
         self.intentAnalyzer = IntentAnalyzer(feature, product, domain)
         
 
-    def getIntentAndValue(self, statement):
-        intent, value = self.intentAnalyzer.getIntentAndValue(statement)
+    def getIntentAndValue(self, statement):    
+
+        if "NO#Choice" in statement:
+            self.slot = "NO#Choice"
+            return "like","NO#Choice"
+
+        intent, value = self.intentAnalyzer.getIntentAndValue(statement)       
+            
         if intent == "dislike":
             if value != "":
                 self.dislike.append(value)            

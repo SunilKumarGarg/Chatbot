@@ -68,9 +68,10 @@ class SalespersonChatbot:
         res["Button"] = []
         feature = {}
         for featureObject in self.featureInstance:
-            print featureObject.feature + ":"+featureObject.slot
-            feature["product_list."+featureObject.feature] = featureObject.slot
-            res["Button"].append(featureObject.slot)
+            if "NO#Choice" not in featureObject.slot:
+                print featureObject.feature + ":"+featureObject.slot
+                feature["product_list."+featureObject.feature] = featureObject.slot
+                res["Button"].append(featureObject.slot)
 
         print res["Button"]
         res["Text"] = "Selected Items"

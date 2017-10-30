@@ -143,7 +143,7 @@ class FeatureDetection:
 
     def getFeature(self, statement):
     
-        if FeatureDetectionEngine.getFeature(statement) != "None":
+        if "NO#Choice" not in statement and FeatureDetectionEngine.getFeature(statement) != "None":
             return FeatureDetectionEngine.getFeature(statement)
         else:
             #if not able to determine the feature from user input, live in the same feature context in which question was asked.

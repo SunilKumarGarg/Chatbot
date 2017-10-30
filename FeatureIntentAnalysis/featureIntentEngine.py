@@ -48,7 +48,7 @@ class IntentAnalyzer:
         Input = self.getInputArray(statement)        
 
         if len(filteredData) == 1:
-            for f in self.getFeatureValue(self.Feature, self.product):
+            for f in self.featureValues:
                 if filteredData[0] in f:
                     return "like", filteredData[0]
 
@@ -81,7 +81,9 @@ class IntentAnalyzer:
         return self.webProductData.getFeatureInfo({"product_list.product": product }, feature)
 
     def question(self):
-        return dumps({"Text": "Please select " + self.Feature, "Button" :str(self.getFeatureValue(self.Feature, self.product))})
+        Button = self.featureValues
+        Button.append("No Choice")
+        return dumps({"Text": "Please select " + self.Feature, "Button" :str(Button)})
 
 
 if __name__ == "__main__":    
