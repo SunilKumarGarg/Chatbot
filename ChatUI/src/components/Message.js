@@ -4,6 +4,7 @@ class Message extends React.Component {
   render() {
     // Was the message sent by the current user. If so, add a css class
     const fromMe = this.props.fromMe ? 'from-me' : '';
+    const message = JSON.parse(this.props.message)
 
     return (
       <div className={`message ${fromMe}`}>
@@ -11,10 +12,20 @@ class Message extends React.Component {
           { this.props.username }
         </div>
         <div className='message-body'>
-          { this.props.message }
+          { message.Text }
+        </div>
+        <div className='message-body'>
+          { message.Button }
+        </div>
+        <div className='message-body'>
+          { message.Template }
         </div>
       </div>
     );
+  }
+
+  renderElements(){
+    
   }
 }
 
