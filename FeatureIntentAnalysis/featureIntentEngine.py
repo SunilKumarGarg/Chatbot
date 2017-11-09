@@ -82,8 +82,9 @@ class IntentAnalyzer:
 
     def question(self):
         Button = self.featureValues
-        Button.append("No Choice")
-        return dumps({"Text": "Please select " + self.Feature, "Button" :str(Button)})
+        if "Any" not in Button:
+            Button.append("Any")
+        return dumps({"Text": "Please select " + self.Feature, "Button" :Button})
 
 
 if __name__ == "__main__":    

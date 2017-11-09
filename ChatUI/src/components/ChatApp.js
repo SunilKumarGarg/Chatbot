@@ -93,7 +93,9 @@ class ChatApp extends React.Component {
     return (
       <div className="container">
         <h3>Chatbot CMPE295 Project</h3>
-        <Messages messages={this.state.messages} />
+        <Messages 
+        messages={this.state.messages} 
+        onSend={this.sendHandler} />
         <ChatInput onSend={this.sendHandler} />
       </div>
     );
